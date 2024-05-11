@@ -1,12 +1,12 @@
 import { AuthProvider } from "./context/AuthContext";
-import { Navbar } from "./componenets/Navbar";
+import { Navbar } from "./componentes/Navbar";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { Home } from "./componenets/Home";
-import { Login } from "./componenets/Login";
-import { RequireAuth } from "./componenets/RequireAuth";
-import { Workouts } from "./componenets/Workouts";
-import { Nutrition } from "./componenets/Nutrition";
-import { Goals } from "./componenets/Goals";
+import { Home } from "./componentes/Home";
+import { Login } from "./componentes/Login";
+import { RequireAuth } from "./componentes/RequireAuth";
+import { Workouts } from "./componentes/Workouts";
+import { Nutrition } from "./componentes/Nutrition";
+import { Goals } from "./componentes/Goals";
 
 function App() {
   return (
