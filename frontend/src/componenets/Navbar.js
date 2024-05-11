@@ -6,7 +6,7 @@ export const Navbar = () => {
   const auth = useAuth();
   const navLinkStyles = ({ isActive }) => {
     return {
-      fontWeight: isActive ? "bold" : "normal",
+      fontWeight: isActive ? "normal" : "normal", //bold
     };
   };
   const handleLogout = () => {
@@ -19,9 +19,21 @@ export const Navbar = () => {
         <NavLink style={navLinkStyles} to="home">
           Home
         </NavLink>
-        <NavLink style={navLinkStyles} to="profile">
-          Profile
-        </NavLink>
+      </div>
+      <div className="center-links">
+        {auth.user && (
+          <>
+            <NavLink style={navLinkStyles} to="workouts">
+              Workouts
+            </NavLink>
+            <NavLink style={navLinkStyles} to="nutrition">
+              Nutrition
+            </NavLink>
+            <NavLink style={navLinkStyles} to="goals">
+              Goals
+            </NavLink>
+          </>
+        )}
       </div>
       <div className="right-links">
         {!auth.user && (

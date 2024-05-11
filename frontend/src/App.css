@@ -46,9 +46,9 @@
 }
 
 
-.left-links, .right-links {
+.left-links, .right-links, .center-links {
   display: flex;
-  gap: 10px; /* Adjust spacing between links */
+  gap: 20px; /* Adjust spacing between links */
 }
 
 .primary-navbar a {
@@ -60,6 +60,7 @@
 
 .primary-navbar a:hover {
   background-color: #ddd;     /* Lighter grey background on hover */
+  border-radius: 5px;
 }
 
 .primary-navbar .active {

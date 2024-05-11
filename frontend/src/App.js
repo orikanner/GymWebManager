@@ -2,9 +2,11 @@ import { AuthProvider } from "./context/AuthContext";
 import { Navbar } from "./componenets/Navbar";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Home } from "./componenets/Home";
-import { Profile } from "./componenets/Profile";
 import { Login } from "./componenets/Login";
 import { RequireAuth } from "./componenets/RequireAuth";
+import { Workouts } from "./componenets/Workouts";
+import { Nutrition } from "./componenets/Nutrition";
+import { Goals } from "./componenets/Goals";
 
 function App() {
   return (
@@ -13,10 +15,26 @@ function App() {
       <Routes>
         <Route path="home" element={<Home />} />
         <Route
-          path="profile"
+          path="workouts"
           element={
             <RequireAuth>
-              <Profile />
+              <Workouts />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="nutrition"
+          element={
+            <RequireAuth>
+              <Nutrition />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="goals"
+          element={
+            <RequireAuth>
+              <Goals />
             </RequireAuth>
           }
         />
