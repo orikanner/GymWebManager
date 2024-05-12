@@ -69,8 +69,55 @@
   border-radius: 5px;         /* Rounded corners for active link */
 }
 
+
 .componenet{
-  background-color:#61dafb ;
-  display: flex;
-  padding: 20px;
+  padding: 10px 30px;
+}
+
+
+.goalsCardsContainer{
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr); /* Sets minimum width of 300px and max as available space */
+  gap: 20px;
+  justify-items: center;
+}
+
+
+.goalCard{
+  box-sizing: border-box; /* Ensures padding and border are included within the element's width/height */
+  display: grid;
+  grid-template-columns: 2fr 1fr auto; /* Allocate space for title, type, and checkbox */
+  gap: 10px; /* Space between grid items */
+  align-items: center; /* Align items vertically in the middle */
+  border: 1px solid #ccc;
+  width: 80%;
+  min-height: 50px;
+  border-radius: 5px;
+  padding: 0px 20px;
+  
+}
+
+
+.goalCard-isCompleted-true{
+  
+}
+.goalCard-isCompleted-false{
+  /* border-color: #4c5fc5; */
+}
+
+
+.screenTitle{
+  text-align: center;
+}
+
+
+.addGoalButton {
+
+}
+.addGoalButton:hover {
+
+}
+
+.isSelectedCheckbox{
+  
 }
