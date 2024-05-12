@@ -84,9 +84,9 @@
 
 
 .goalCard{
-  box-sizing: border-box; /* Ensures padding and border are included within the element's width/height */
+  box-sizing: border-box; /* Ensures padding and borer are included within the element's width/height */
   display: grid;
-  grid-template-columns: 2fr 1fr auto; /* Allocate space for title, type, and checkbox */
+  grid-template-columns: 2fr 1fr auto auto; /* Allocate space for title, type, and checkbox */
   gap: 10px; /* Space between grid items */
   align-items: center; /* Align items vertically in the middle */
   border: 1px solid #ccc;

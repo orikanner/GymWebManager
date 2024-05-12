@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoalCard } from "./GoalCard";
 import {
   Button,
@@ -7,58 +7,58 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-// type goal = {
-//   id:string;
-//   title:String;
-//   type:{"Fiteness" || "Nutrition"};
-//   isCompleted : Boolean;
-//   createdAt :timestamp;
-//   createdBy :String;
-// }
+import { createGoal, deleteGoal, fetchGoals } from "../utils/goals";
+/* type goal = {
+  _id:string;
+  title:String;
+  type:{"Fiteness" || "Nutrition"};
+  isCompleted : Boolean;
+  createdAt :timestamp;
+  createdBy :String;
+}
+*/
 
-const goalsList = [
-  {
-    id: "id1",
-    title: "MyGoal4",
-    type: "Fiteness",
-    isCompleted: true,
-    createdAt: "22",
-  },
-  {
-    id: "id2",
-    title: "MyGoal1",
-    type: "Fiteness",
-    isCompleted: false,
-    createdAt: "15",
-  },
-  {
-    id: "id3",
-    title: "MyGoal2",
-    type: "Nutrition",
-    isCompleted: true,
-    createdAt: "12",
-  },
-  {
-    id: "id4",
-    title: "MyGoal3",
-    type: "Nutrition",
-    isCompleted: false,
-    createdAt: "11",
-  },
-];
 export const Goals = () => {
   const [title, setTitle] = useState("");
-  const [type, setType] = useState("");
-  const [isCompleted, setIsCompleted] = useState(null);
+  const [type, setType] = useState("Nutrition");
+  const [goals, setGoals] = useState([]);
 
-  const handleNewGoal = () => {
-    console.log("New Goal");
+  useEffect(() => {
+    const getGoals = async () => {
+      try {
+        const goalsData = await fetchGoals();
+        setGoals(goalsData);
+      } catch (error) {
+        console.error("Error fetching goals:", error);
+      }
+    };
+    getGoals();
+  }, []);
+
+  const handleNewGoal = async () => {
+    try {
+      const newGoal = await createGoal(title, type);
+      setGoals((prevGoals) => [newGoal, ...prevGoals]);
+    } catch (error) {
+      console.error("Error creating new goal:", error);
+    }
   };
+
+  const handleDeleteGoal = async (goalId) => {
+    try {
+      await deleteGoal(goalId);
+      setGoals((currentGoals) =>
+        currentGoals.filter((goal) => goal._id !== goalId)
+      );
+    } catch (error) {
+      console.error("Error deleting goal:", error);
+    }
+  };
+
   return (
     <div className="componenet goalsComponenet">
       <h1 className="screenTitle">Goals</h1>
       <div className="goalsCardsContainer">
-        {/* <div style={{display:"flex",flexDirection:"row",alignItems:"center",gap:"10px"}}> */}
         <div
           style={{
             display: "grid",
@@ -95,8 +95,14 @@ export const Goals = () => {
           </Button>
         </div>
 
-        {goalsList.map((item, index) => {
-          return <GoalCard key={item.id} goalCardProps={item} />;
+        {goals.map((item, index) => {
+          return (
+            <GoalCard
+              key={item._id}
+              goal={item}
+              onDelete={() => handleDeleteGoal(item._id)}
+            />
+          );
         })}
       </div>
     </div>

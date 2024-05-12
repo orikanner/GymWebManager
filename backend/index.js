@@ -18,8 +18,9 @@ const jwt = require("jsonwebtoken");
 
 
 
-// const userRoutes = require("./routes/userRoutes");
-// app.use("/api/users", userRoutes);
-
+const userRoutes = require("./routes/userRoutes");
+app.use("/api/users", userRoutes);
+const goalRoutes = require("./routes/goalRoutes")
+app.use("/api/goals", goalRoutes);
 
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
