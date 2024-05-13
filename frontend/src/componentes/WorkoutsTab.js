@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { workoutsData } from "../workoutsPlans";
 import { Workout } from "./Workout";
-export const Workouts = () => {
+export const WorkoutsTab = () => {
   const [activeWorkout, setActiveWorkout] = useState(null);
 
   const handleButtonClick = (newActiveWorkout) => {
-    if (newActiveWorkout == activeWorkout) {
+    if (newActiveWorkout === activeWorkout) {
       setActiveWorkout(null);
     } else {
       setActiveWorkout(newActiveWorkout);
@@ -31,7 +31,7 @@ export const Workouts = () => {
         </div>
         {activeWorkout && (
           <Workout
-            workout={workoutsData.find((item) => item.level == activeWorkout)}
+            workout={workoutsData.find((item) => item.level === activeWorkout)}
           />
         )}
       </div>

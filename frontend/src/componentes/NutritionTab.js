@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { nutritionPlans } from "../nutritionPlans";
-import { Button, Divider } from "@mui/material";
+import { Button } from "@mui/material";
 import { NutritionPlan } from "./NutritionPlan";
 
-export const Nutrition = () => {
+export const NutritionTab = () => {
   //massGain || cutting
   const [activeNutritionPlan, setActiveNutritionPlan] = useState(null);
   const handleButtonClick = (newNutritionPlan) => {
-    if (newNutritionPlan == activeNutritionPlan) {
+    if (newNutritionPlan === activeNutritionPlan) {
       setActiveNutritionPlan(null);
     } else {
       setActiveNutritionPlan(newNutritionPlan);
@@ -33,7 +33,7 @@ export const Nutrition = () => {
         {activeNutritionPlan && (
           <NutritionPlan
             nutritionPlan={nutritionPlans.find(
-              (item) => item.type == activeNutritionPlan
+              (item) => item.type === activeNutritionPlan
             )}
           />
         )}

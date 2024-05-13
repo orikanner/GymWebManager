@@ -4,8 +4,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { Home } from "./componentes/Home";
 import { Login } from "./componentes/Login";
 import { RequireAuth } from "./componentes/RequireAuth";
-import { Workouts } from "./componentes/Workouts";
-import { Nutrition } from "./componentes/Nutrition";
+import { WorkoutsTab } from "./componentes/WorkoutsTab";
+import { NutritionTab } from "./componentes/NutritionTab";
 import { Goals } from "./componentes/Goals";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           path="workouts"
           element={
             <RequireAuth>
-              <Workouts />
+              <WorkoutsTab />
             </RequireAuth>
           }
         />
@@ -26,7 +26,7 @@ function App() {
           path="nutrition"
           element={
             <RequireAuth>
-              <Nutrition />
+              <NutritionTab />
             </RequireAuth>
           }
         />
