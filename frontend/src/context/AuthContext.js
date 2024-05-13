@@ -75,6 +75,7 @@ export const AuthProvider = ({ children }) => {
       try {
         const response = await axios.get("http://localhost:8080/api/users/me");
         setUser(response.data.user);
+        console.log(response.data)
       } catch (error) {
         console.error("Failed to load user from token:", error);
         logout();

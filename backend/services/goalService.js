@@ -25,7 +25,7 @@ const updateGoalStatus = async (userId, goalId, isCompleted) => {
 };
 
 const getGoalsByUser = async (userId) => {
-  return Goal.find({ createdBy: userId });
+  return Goal.find({ createdBy: userId }).sort({ createdAt: -1 });
 };
 
 module.exports = {

@@ -11,7 +11,7 @@ router.post('/goals',authMiddleware.verifyToken, goalController.createGoal);
 //Delete goal
 router.delete('/goals/:id',authMiddleware.verifyToken, goalController.deleteGoal);
 // Change goal status
-router.put('/goals/:id/status',authMiddleware.verifyToken, goalController.changeGoalStatus);
+router.put('/goals/:id',authMiddleware.verifyToken, goalController.changeGoalStatus);
 
 
 module.exports = router;

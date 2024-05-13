@@ -15,16 +15,27 @@ export const Login = () => {
     // if the user is logedIn this blocks this screen
     return <Navigate to="/" state={{ path: location.pathname }} />;
   }
-  const handleLogin = () => {
+
+  const handleLogin = async () => {
     console.log("login");
-    auth.login(userName, password);
-    navigate(redirectPath, { replace: true }); //replace like delets history kind off
+    try {
+      await auth.login(userName, password);
+      navigate(redirectPath, { replace: true }); //replace like delets history kind off
+    } catch (e) {
+      alert("Try Again");
+    }
   };
-  const handleRegister = () => {
+
+  const handleRegister = async () => {
     console.log("handleRegister");
-    auth.register(userName, password);
-    navigate(redirectPath, { replace: true }); //replace like delets history kind off
+    try {
+      await auth.register(userName, password);
+      navigate(redirectPath, { replace: true }); //replace like delets history kind off
+    } catch (e) {
+      alert("Try Again");
+    }
   };
+
   return (
     <div className="componenet">
       <div
@@ -51,7 +62,7 @@ export const Login = () => {
       </div>
       <div
         style={{
-          marginTop:"10px",
+          marginTop: "10px",
           display: "grid",
           gridTemplateRows: "auto auto", // Adjust this based on your needs
           alignItems: "center",

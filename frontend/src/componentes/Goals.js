@@ -7,7 +7,12 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { createGoal, deleteGoal, fetchGoals } from "../utils/goals";
+import {
+  createGoal,
+  deleteGoal,
+  fetchGoals,
+  updateIsCompleted,
+} from "../utils/goals";
 /* type goal = {
   _id:string;
   title:String;
@@ -55,6 +60,11 @@ export const Goals = () => {
     }
   };
 
+  const handleIsCompletedChanged = async (goalId, newStatus) => {
+    try {
+      await updateIsCompleted(goalId, newStatus);
+    } catch (e) {}
+  };
   return (
     <div className="componenet goalsComponenet">
       <h1 className="screenTitle">Goals</h1>
@@ -77,7 +87,7 @@ export const Goals = () => {
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="Nutrition"
             name="radio-buttons-group"
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => setType(e.target.value)}
           >
             <FormControlLabel
               value="Nutrition"
@@ -101,6 +111,9 @@ export const Goals = () => {
               key={item._id}
               goal={item}
               onDelete={() => handleDeleteGoal(item._id)}
+              onIsCompletedChanged={(idFromCard, iscompletedFromCard) =>
+                handleIsCompletedChanged(idFromCard, iscompletedFromCard)
+              }
             />
           );
         })}
