@@ -44,6 +44,7 @@ export const Goals = () => {
     try {
       const newGoal = await createGoal(title, type);
       setGoals((prevGoals) => [newGoal, ...prevGoals]);
+      setTitle("");
     } catch (error) {
       console.error("Error creating new goal:", error);
     }
